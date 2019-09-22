@@ -15,6 +15,6 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$k8sversion/b
 chmod +x ./kubectl
 
 # Move the kubectl executable to /usr/local/bin.
-sudo mv ./kubectl /usr/local/bin/kubectl
+#sudo mv ./kubectl /usr/local/bin/kubectl
 
-sh -c "kubectl $*"
+sh -c "./kubectl $*"
