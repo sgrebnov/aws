@@ -9,10 +9,19 @@ set -e
 [ -n "$AWS_DEFAULT_OUTPUT" ] || export AWS_DEFAULT_OUTPUT=json
 
 # Capture output
-output=$( sh -c "aws $*" )
+#output=$( sh -c "aws $*" )
 
 # Preserve output for consumption by downstream actions
-echo "$output" > "${HOME}/${GITHUB_ACTION}.${AWS_DEFAULT_OUTPUT}"
+#echo "$output" > "${HOME}/${GITHUB_ACTION}.${AWS_DEFAULT_OUTPUT}"
 
 # Write output to STDOUT
-echo "$output"
+#echo "$output"
+
+echo "$KUBE_CONFIG_DATA" | base64 --decode > /tmp/config
+export KUBECONFIG=/tmp/config
+
+k8sversion=v1.16.0
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$k8sversion/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+
+sh -c "$*"
