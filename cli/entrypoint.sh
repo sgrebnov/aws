@@ -10,9 +10,9 @@ set -e
 
 # Capture output
 #output=$( sh -c "aws $*" )
-sh -c "aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID"
-sh -c "aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY"
-sh -c "aws configure set region $AWS_DEFAULT_REGION"
+sh -c "aws --profile default configure set aws_access_key_id '$AWS_ACCESS_KEY_ID'"
+sh -c "aws --profile default configure set aws_secret_access_key '$AWS_SECRET_ACCESS_KEY'"
+sh -c "aws --profile default configure set region '$AWS_DEFAULT_REGION'"
 
 # Preserve output for consumption by downstream actions
 #echo "$output" > "${HOME}/${GITHUB_ACTION}.${AWS_DEFAULT_OUTPUT}"
