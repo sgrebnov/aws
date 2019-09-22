@@ -28,7 +28,7 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$k8sversion/b
 chmod +x ./kubectl
 
 #output=$( sh -c "aws eks --region '$AWS_DEFAULT_REGION' update-kubeconfig --name projects" )
-output=$( sh -c "aws sts get-caller-identity" )
+output=$( sh -c "aws sts get-caller-identity --debug" )
 echo "$output"
                       
 sh -c "$*"
