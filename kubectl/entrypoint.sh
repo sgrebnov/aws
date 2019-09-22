@@ -17,4 +17,7 @@ chmod +x ./kubectl
 # Move the kubectl executable to /usr/local/bin.
 #sudo mv ./kubectl /usr/local/bin/kubectl
 
+# AWS cli is required for newer kubectl auth 
+pip install setuptools awscli
+
 sh -c "./kubectl $*"
