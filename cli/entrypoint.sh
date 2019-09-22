@@ -20,11 +20,13 @@ sh -c "aws --profile default configure set region '$AWS_DEFAULT_REGION'"
 # Write output to STDOUT
 #echo "$output"
 
-echo "$KUBE_CONFIG_DATA" | base64 --decode > /tmp/config
-export KUBECONFIG=/tmp/config
+#echo "$KUBE_CONFIG_DATA" | base64 --decode > /tmp/config
+#export KUBECONFIG=/tmp/config
 
 k8sversion=v1.16.0
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$k8sversion/bin/linux/amd64/kubectl
 chmod +x ./kubectl
+
+aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name projects
 
 sh -c "$*"
