@@ -18,6 +18,6 @@ chmod +x ./kubectl
 #sudo mv ./kubectl /usr/local/bin/kubectl
 
 # AWS cli is required for newer kubectl auth 
-pip install awscli
+pip install --upgrade pip && pip install setuptools awscli
 
 sh -c "./kubectl $*"
