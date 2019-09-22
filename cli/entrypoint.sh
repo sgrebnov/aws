@@ -27,7 +27,6 @@ k8sversion=v1.16.0
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$k8sversion/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 
-aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name projects
-cat $HOME/.kube/config                        
+aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name projects                       
 
 sh -c "$*"
