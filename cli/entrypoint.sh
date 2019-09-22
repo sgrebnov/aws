@@ -10,9 +10,9 @@ set -e
 
 # Capture output
 #output=$( sh -c "aws $*" )
-sh -c "aws --profile default configure set aws_access_key_id '$AWS_ACCESS_KEY_ID'"
-sh -c "aws --profile default configure set aws_secret_access_key '$AWS_SECRET_ACCESS_KEY'"
-sh -c "aws --profile default configure set region '$AWS_DEFAULT_REGION'"
+aws --profile default configure set aws_access_key_id "$AWS_ACCESS_KEY_ID"
+aws --profile default configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"
+aws --profile default configure set region "$AWS_DEFAULT_REGION"
 
 # Preserve output for consumption by downstream actions
 #echo "$output" > "${HOME}/${GITHUB_ACTION}.${AWS_DEFAULT_OUTPUT}"
@@ -28,5 +28,6 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$k8sversion/b
 chmod +x ./kubectl
 
 aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name projects
+cat $HOME/.kube/config                        
 
 sh -c "$*"
