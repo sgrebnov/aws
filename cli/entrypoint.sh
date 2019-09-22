@@ -10,6 +10,7 @@ set -e
 
 # Capture output
 #output=$( sh -c "aws $*" )
+sh -c "aws configure"
 
 # Preserve output for consumption by downstream actions
 #echo "$output" > "${HOME}/${GITHUB_ACTION}.${AWS_DEFAULT_OUTPUT}"
